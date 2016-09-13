@@ -22,6 +22,7 @@ function LunchController($scope){
 		const HAS_SUCCESS = "has-success";
 		const HAS_ERROR = "has-error";
 
+		//default values
 		$scope.items = "";
 		$scope.textColor = BLACK;
 		$scope.borderClr = "";
