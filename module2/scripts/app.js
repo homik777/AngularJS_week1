@@ -4,32 +4,53 @@
 Array.prototype.isEmpty = function(){
 	return (this.length === 0 );
 }
-var toBuyList = [{name: "potatoes",	quantity: "5"},{name: "tomatoes",quantity: "3"},{	name: "eggs",	quantity: "10"},
-{	name: "milk boxes",	quantity: "2"},{name: "cow",	quantity: "1"}];
 
 angular.module('ShoppingListCheckOff', [])
-.controller('ToBuyListController',ToBuyListController)
-.controller('AlreadyBoughtListController',AlreadyBoughtListController)
-.service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+.controller('ToBuyController',ToBuyController)
+.controller('AlreadyBoughtController',AlreadyBoughtController)
+.service('ShoppingListCheckOffService', ShoppingListCheckOffService)
 
-ToBuyListController.$inject = [];
-function ToBuyListController(){
+ToBuyController.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService){
 	var checkOff = this;
 
-	checkOff.items = toBuyList;
+	checkOff.items = ShoppingListCheckOffService.getItemsToBuy();
+	checkOff.checkOffItem = function(itemIndex){
+		ShoppingListCheckOffService.checkOffItem(itemIndex);
+	}
 }
 
-AlreadyBoughtListController.$inject = [];
-function AlreadyBoughtListController(){
-var showBought = this;
+AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+function AlreadyBoughtController(ShoppingListCheckOffService){
+	var bought = this;
 
-	showBought.items = [];
+	bought.items = ShoppingListCheckOffService.getBoughtItems();
+	console.log(ShoppingListCheckOffService.getBoughtItems());
 }
 
-ShoppingListCheckOffService.$inject[];
 function ShoppingListCheckOffService(){
 	var service = this;
-}
 
+	var toBuyList = [{name: "potatoes",	quantity: "5"},{name: "tomatoes",quantity: "3"},{	name: "eggs",	quantity: "10"},
+	{	name: "milk boxes",	quantity: "2"},{name: "cow",	quantity: "1"}];
+
+	var itemsToBuy = toBuyList;
+	var boughtItems = [];
+
+	service.getBoughtItems = function (){
+		return boughtItems;
+	}
+
+	service.getItemsToBuy = function() {
+		return itemsToBuy;
+	}
+
+	service.checkOffItem = function (itemIndex){
+		boughtItems.push(itemsToBuy[itemIndex]);
+		itemsToBuy.splice(itemIndex, 1);
+		console.log(boughtItems);
+	}
+
+}
 
 })();
