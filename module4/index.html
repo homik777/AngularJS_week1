@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="MenuApp">
+  <head>
+    <title>Menu Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!--Library-->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+
+    <!--Modules-->
+    <script type="text/javascript" src="scripts/data.module.js"></script>
+    
+    <script type="text/javascript" src="scripts/menuapp.module.js" ></script>
+  </head>
+<body >
+   <div class="container" ng-controller="NarrowItDownController as menu">
+     <div class="row">
+       <div class="col-md-12 jumbotron">
+         <div class="text-center">
+           <h1>Welcome to our Restaurant!</h1>
+           <p>We have the best food in the town just only for you.</p>
+           <p><a class="btn btn-success btn-lg" href="#" role="button">See our menu...</a></p>
+         </div>
+
+       </div>
+     </div>
+  </div>
+
+</body>
+</html>
