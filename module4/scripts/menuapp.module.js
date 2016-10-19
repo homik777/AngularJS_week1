@@ -8,5 +8,5 @@ String.prototype.isEmpty = function(){
 	return (this.length === 0 || !this.trim());
 }
 
-angular.module('MenuApp', ['Data']);
+angular.module('MenuApp', ['DataModule']);
 })();
