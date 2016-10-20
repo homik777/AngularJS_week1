@@ -1,11 +1,12 @@
 (function(){
 'use strict';
 
-angular.module('Data')
-.component("items",{
-	templateUrl:,
-	controller:,
-	binding:{
+angular.module('DataModule')
+.component("itemList",{
+	templateUrl:'views/items.component.html',
+	bindings:{
+		items: '<',
+		category: '<'
 	}
 });
 

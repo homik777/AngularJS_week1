@@ -3,16 +3,10 @@
 
 angular.module('DataModule')
 .component("categoriesList",{
-	templateUrl:'categories.view.html',
-	controller: CategoriesComponentController,
-	binding:{
+	templateUrl:'views/categories.component.html',
+	bindings:{
 		categories: '<'
 	}
 });
 
-CategoriesComponentController.$inject = []
-function CategoriesComponentController(){
-	var $ctrl = this;
-
-}
 })();

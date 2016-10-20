@@ -15,7 +15,23 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
 		})
 		.state('categories',{
 			url:'/categories',
-			templateUrl: 'views/categories.view.html'
+			templateUrl: 'views/categories.view.html',
+			controller: 'MenuCategoriesController as categoriesList',
+			resolve: {
+				items: ['MenuDataService', function(MenuDataService){
+					return MenuDataService.getAllCategories();
+				}]
+			}
+		})
+		.state('items',{
+			url:'/items/{itemId}',
+			templateUrl: 'views/items.view.html',
+			controller: 'MenuItemsController as itemList',
+			resolve: {
+				items: ['$stateParams','MenuDataService', function($stateParams, MenuDataService){
+					return MenuDataService.getItemsForCategory($stateParams.itemId);
+				}]
+			}
 		})
 }
 
