@@ -1,29 +1,33 @@
 <!doctype html>
-<html lang="en" ng-app="NarrowItDownApp">
+<html lang="en" ng-app="MenuApp">
   <head>
-    <title>Narrow Down Your Menu Choice</title>
+    <title>Menu Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <script type="text/javascript" src="scripts/angular.min.js"></script>
-	<script type="text/javascript" src="scripts/app.js"></script>
+
+    <!--Librarires-->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+
+    <!--Modules-->
+    <script type="text/javascript" src="scripts/data.module.js"></script>
+    <script type="text/javascript" src="scripts/menuapp.module.js" ></script>
+
+    <script type="text/javascript" src="scripts/routes.js"></script>
+
+    <!-- Artifacts -->
+    <script type="text/javascript" src="scripts/menuCategories.controller.js"></script>
+    <script type="text/javascript" src="scripts/menuitems.controller.js"></script>
+    <script type="text/javascript" src="scripts/menudata.service.js"></script>
+    <script type="text/javascript" src="scripts/categories.component.js"></script>
+    <script type="text/javascript" src="scripts/items.component.js"></script>
   </head>
 <body >
-   <div class="container" ng-controller="NarrowItDownController as menu">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div class="form-group">
-      <input ng-model="menu.searchCriteria" type="text" placeholder="search term" class="form-control">
-    </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="menu.narrowItDown(menu.searchCriteria)">Narrow It Down For Me!</button>
-    </div>
-  <br>
-  <br>
-  <br>
+  <div class="container" ng-app="Data">
+    <ui-view></ui-view>
 
-    <!-- found-items should be implemented as a component -->
-    <found-items items="menu.found" on-remove="menu.removeItem(index)"></found-items>
   </div>
 
 </body>
