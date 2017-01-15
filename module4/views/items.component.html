@@ -1,0 +1,23 @@
+<div class="panel panel-warning">
+  <div class="panel-heading text-center"><h2>Menu items for category: {{$ctrl.category.name}}</h2></div>
+  <table class="table" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price for small portion</th>
+        <th>Price for large portion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in $ctrl.items">
+        <td >{{$index+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price_small}}</td>
+        <td>{{item.price_large}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
